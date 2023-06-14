@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  dev-db:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    networks:
+      - freecodecamp
+networks:
+  freecodecamp:
+
+# docker compose up dev-db -d
+
+# 1. now database is running with docker 
+
+# 2. create database module with Prisma
+#    - install prisma cli : yarn add -D prisma

@@ -1,13 +1,15 @@
-import { Controller, Post } from "@nestjs/common";
+import { Body, Controller, ParseIntPipe, Post } from "@nestjs/common";
 import { AuthService } from "./auth.service";
+import { AuthDto } from "./dto";
 
 @Controller('auth')
 export class AuthController{
     constructor(private AuthService: AuthService) {}
 
     @Post('signup')
-    signup() {
-        return this.AuthService.signup()
+    signup(@Body() dto: AuthDto) {
+        console.log({dto})
+        return this.AuthService.signup(dto)
     }
 
     @Post('signin')
@@ -16,6 +18,13 @@ export class AuthController{
     }
 }
 
+
+// The @Req() decorator tells NestJS that we want to access
+// the Express request object within the method.
+
+// The req parameter of type Request represents
+// the Express request object. It contains information about
+// the HTTP request, such as headers, query parameters, request body.
 
 
 
